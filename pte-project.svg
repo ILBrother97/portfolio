@@ -1,80 +1,187 @@
 <svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
-  <!-- Define gradient -->
   <defs>
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8FA464;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7a8f55;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#0F172A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E293B;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10212B;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1a3344;stop-opacity:1" />
+    <linearGradient id="parentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891B2;stop-opacity:1" />
     </linearGradient>
+    <linearGradient id="teacherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A855F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="studentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="connectGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A855F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
   
-  <!-- Background with gradient -->
+  <!-- Background -->
   <rect width="400" height="250" fill="url(#bgGradient)"/>
   
-  <!-- Central Platform/Interface -->
-  <rect x="100" y="60" width="200" height="130" rx="10" fill="#EFFBDB" opacity="0.95"/>
-  
-  <!-- Screen/Header of platform -->
-  <rect x="110" y="70" width="180" height="40" rx="5" fill="url(#accentGradient)"/>
-  <rect x="120" y="85" width="60" height="4" rx="2" fill="#EFFBDB" opacity="0.8"/>
-  <rect x="120" y="93" width="40" height="3" rx="1.5" fill="#EFFBDB" opacity="0.6"/>
-  
-  <!-- Content lines in platform -->
-  <rect x="120" y="120" width="160" height="3" rx="1.5" fill="#10212B" opacity="0.3"/>
-  <rect x="120" y="128" width="160" height="3" rx="1.5" fill="#10212B" opacity="0.3"/>
-  <rect x="120" y="136" width="120" height="3" rx="1.5" fill="#10212B" opacity="0.3"/>
-  
-  <!-- Person 1 (Parent- Left) -->
-  <g transform="translate(40, 120)">
-    <circle cx="0" cy="0" r="22" fill="url(#accentGradient)"/>
-    <circle cx="0" cy="-5" r="10" fill="#EFFBDB" opacity="0.9"/>
-    <path d="M -12 8 Q -12 18 0 18 Q 12 18 12 8" fill="#EFFBDB" opacity="0.9"/>
+  <!-- Animated connection network -->
+  <g opacity="0.6">
+    <circle cx="200" cy="125" r="80" fill="none" stroke="url(#connectGrad)" stroke-width="1" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;32" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="200" cy="125" r="100" fill="none" stroke="url(#connectGrad)" stroke-width="0.5" stroke-dasharray="3,6">
+      <animate attributeName="stroke-dashoffset" values="0;-27" dur="3s" repeatCount="indefinite"/>
+    </circle>
   </g>
   
-  <!-- Person 2 (Teacher- Right) -->
-  <g transform="translate(360, 120)">
-    <circle cx="0" cy="0" r="22" fill="url(#accentGradient)"/>
-    <circle cx="0" cy="-5" r="10" fill="#EFFBDB" opacity="0.9"/>
-    <path d="M -12 8 Q -12 18 0 18 Q 12 18 12 8" fill="#EFFBDB" opacity="0.9"/>
+  <!-- Central Hub - Communication Bridge -->
+  <g transform="translate(200, 125)" filter="url(#glow)">
+    <rect x="-45" y="-25" width="90" height="50" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <!-- Chat icon in center -->
+    <path d="M -20 -8 L 0 8 L 20 -8" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round"/>
+    <rect x="-25" y="5" width="50" height="3" rx="1.5" fill="#A855F7" opacity="0.7"/>
+    <rect x="-20" y="11" width="40" height="3" rx="1.5" fill="#F59E0B" opacity="0.5"/>
   </g>
   
-  <!-- Connection arrows showing engagement -->
-  <path d="M 65 120 L 95 120" stroke="#EFFBDB" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
-  <path d="M 335 120 L 305 120" stroke="#EFFBDB" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
-  
-  <!-- Arrow marker definition -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#EFFBDB" opacity="0.8"/>
-    </marker>
-  </defs>
-  
-  <!-- Communication bubbles -->
-  <g transform="translate(140, 45)">
-    <ellipse cx="0" cy="0" rx="18" ry="14" fill="#EFFBDB" opacity="0.9"/>
-    <path d="M -10 8 L -5 15 L 0 8" fill="#EFFBDB" opacity="0.9"/>
-    <circle cx="-3" cy="-2" r="2" fill="#8FA464" opacity="0.6"/>
-    <circle cx="3" cy="-2" r="2" fill="#8FA464" opacity="0.6"/>
+  <!-- Parent Avatar (Top) -->
+  <g transform="translate(200, 40)" filter="url(#softGlow)">
+    <circle cx="0" cy="0" r="28" fill="url(#parentGrad)"/>
+    <circle cx="0" cy="-6" r="12" fill="#E0F7FA"/>
+    <path d="M -14 10 Q -14 18 0 18 Q 14 18 14 10" fill="#E0F7FA"/>
+    <!-- Heart icon -->
+    <path d="M 0 -18 L -4 -22 L 0 -25 L 4 -22 Z" fill="#F43F5E"/>
+    <text x="0" y="38" text-anchor="middle" fill="#06B6D4" font-family="Arial" font-size="8" font-weight="bold">PARENT</text>
   </g>
   
-  <g transform="translate(260, 45)">
-    <ellipse cx="0" cy="0" rx="18" ry="14" fill="#EFFBDB" opacity="0.9"/>
-    <path d="M 10 8 L 15 15 L 20 8" fill="#EFFBDB" opacity="0.9"/>
-    <circle cx="-3" cy="-2" r="2" fill="#8FA464" opacity="0.6"/>
-    <circle cx="3" cy="-2" r="2" fill="#8FA464" opacity="0.6"/>
+  <!-- Teacher Avatar (Left) -->
+  <g transform="translate(55, 125)" filter="url(#softGlow)">
+    <circle cx="0" cy="0" r="26" fill="url(#teacherGrad)"/>
+    <circle cx="0" cy="-5" r="11" fill="#F3E8FF"/>
+    <path d="M -13 9 Q -13 17 0 17 Q 13 17 13 9" fill="#F3E8FF"/>
+    <!-- Book icon -->
+    <rect x="-8" y="-16" width="16" height="10" rx="2" fill="#7C3AED" opacity="0.8"/>
+    <line x1="-4" y1="-16" x2="-4" y2="-6" stroke="white" stroke-width="1.5"/>
+    <line x1="0" y1="-16" x2="0" y2="-6" stroke="white" stroke-width="1.5"/>
+    <line x1="4" y1="-16" x2="4" y2="-6" stroke="white" stroke-width="1.5"/>
+    <text x="0" y="38" text-anchor="middle" fill="#A855F7" font-family="Arial" font-size="8" font-weight="bold">TEACHER</text>
   </g>
   
-  <!-- Decorative elements -->
-  <circle cx="30" cy="30" r="12" fill="#EFFBDB" opacity="0.2"/>
-  <circle cx="370" cy="220" r="18" fill="#EFFBDB" opacity="0.2"/>
-  <circle cx="350" cy="40" r="10" fill="#10212B" opacity="0.15"/>
-  <circle cx="50" cy="200" r="15" fill="#10212B" opacity="0.15"/>
+  <!-- Student Avatar (Right) -->
+  <g transform="translate(345, 125)" filter="url(#softGlow)">
+    <circle cx="0" cy="0" r="26" fill="url(#studentGrad)"/>
+    <circle cx="0" cy="-5" r="11" fill="#FEF3C7"/>
+    <path d="M -13 9 Q -13 17 0 17 Q 13 17 13 9" fill="#FEF3C7"/>
+    <!-- Star icon -->
+    <path d="M 0 -18 L -3 -13 L 3 -13 Z" fill="#FBBF24"/>
+    <circle cx="0" cy="-15" r="5" fill="#FBBF24"/>
+    <text x="0" y="38" text-anchor="middle" fill="#F59E0B" font-family="Arial" font-size="8" font-weight="bold">STUDENT</text>
+  </g>
   
-  <!-- Network/connection dots -->
-  <circle cx="80" cy="180" r="4" fill="#EFFBDB" opacity="0.5"/>
-  <circle cx="320" cy="180" r="4" fill="#EFFBDB" opacity="0.5"/>
-  <circle cx="200" cy="210" r="5" fill="#EFFBDB" opacity="0.6"/>
+  <!-- Connection Lines -->
+  <!-- Parent to Hub -->
+  <path d="M 200 68 L 200 100" stroke="#06B6D4" stroke-width="2" stroke-dasharray="5,3" opacity="0.8">
+    <animate attributeName="stroke-dashoffset" values="0;-16" dur="1s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Teacher to Hub -->
+  <path d="M 81 125 L 155 125" stroke="#A855F7" stroke-width="2" stroke-dasharray="5,3" opacity="0.8">
+    <animate attributeName="stroke-dashoffset" values="0;-16" dur="1s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Hub to Student -->
+  <path d="M 245 125 L 319 125" stroke="#F59E0B" stroke-width="2" stroke-dasharray="5,3" opacity="0.8">
+    <animate attributeName="stroke-dashoffset" values="0;-16" dur="1s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Messaging bubbles floating -->
+  <!-- Parent message bubble -->
+  <g transform="translate(100, 70)">
+    <rect x="0" y="0" width="40" height="26" rx="13" fill="#164E63">
+      <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <circle cx="12" cy="13" r="3" fill="#06B6D4"/>
+    <circle cx="20" cy="13" r="3" fill="#06B6D4" opacity="0.7"/>
+    <circle cx="28" cy="13" r="3" fill="#06B6D4" opacity="0.4"/>
+  </g>
+  
+  <!-- Teacher message bubble -->
+  <g transform="translate(260, 70)">
+    <rect x="0" y="0" width="40" height="26" rx="13" fill="#4C1D95">
+      <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    </rect>
+    <circle cx="12" cy="13" r="3" fill="#A855F7"/>
+    <circle cx="20" cy="13" r="3" fill="#A855F7" opacity="0.7"/>
+    <circle cx="28" cy="13" r="3" fill="#A855F7" opacity="0.4"/>
+  </g>
+  
+  <!-- Feature Cards -->
+  <!-- Grade Card (Bottom Left) -->
+  <g transform="translate(70, 180)">
+    <rect x="0" y="0" width="45" height="40" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <text x="22.5" y="15" text-anchor="middle" fill="#10B981" font-family="Arial" font-size="14" font-weight="bold">A+</text>
+    <rect x="8" y="22" width="29" height="3" rx="1.5" fill="#334155"/>
+    <rect x="8" y="27" width="20" height="3" rx="1.5" fill="#334155"/>
+    <circle cx="35" cy="32" r="5" fill="#F59E0B" opacity="0.3"/>
+  </g>
+  
+  <!-- Calendar (Bottom Right) -->
+  <g transform="translate(285, 180)">
+    <rect x="0" y="0" width="45" height="40" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <rect x="0" y="0" width="45" height="12" rx="8" fill="#7C3AED"/>
+    <text x="22.5" y="10" text-anchor="middle" fill="white" font-family="Arial" font-size="5" font-weight="bold">MEETING</text>
+    <text x="22.5" y="30" text-anchor="middle" fill="white" font-family="Arial" font-size="14" font-weight="bold">3:00</text>
+    <circle cx="35" cy="8" r="4" fill="#EF4444">
+      <animate attributeName="r" values="4;5;4" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Homework/Assignment Icon -->
+  <g transform="translate(177, 195)">
+    <rect x="0" y="0" width="46" height="35" rx="6" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    <rect x="5" y="6" width="36" height="4" rx="2" fill="#F59E0B"/>
+    <rect x="5" y="13" width="25" height="3" rx="1.5" fill="#64748B"/>
+    <rect x="5" y="19" width="30" height="3" rx="1.5" fill="#64748B"/>
+    <rect x="5" y="25" width="20" height="3" rx="1.5" fill="#64748B"/>
+  </g>
+  
+  <!-- Notification indicators -->
+  <circle cx="160" cy="55" r="6" fill="#EF4444">
+    <animate attributeName="r" values="6;8;6" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <text x="160" y="58" text-anchor="middle" fill="white" font-family="Arial" font-size="7" font-weight="bold">2</text>
+  
+  <circle cx="240" cy="55" r="6" fill="#EF4444">
+    <animate attributeName="r" values="6;8;6" dur="1s" repeatCount="indefinite" begin="0.3s"/>
+  </circle>
+  <text x="240" y="58" text-anchor="middle" fill="white" font-family="Arial" font-size="7" font-weight="bold">5</text>
+  
+  <!-- Floating data particles -->
+  <circle cx="30" cy="50" r="2" fill="#06B6D4" opacity="0.5"/>
+  <circle cx="370" cy="50" r="2" fill="#A855F7" opacity="0.5"/>
+  <circle cx="30" cy="200" r="2" fill="#F59E0B" opacity="0.5"/>
+  <circle cx="370" cy="200" r="2" fill="#06B6D4" opacity="0.5"/>
+  <circle cx="100" cy="30" r="1.5" fill="#A855F7" opacity="0.4"/>
+  <circle cx="300" cy="30" r="1.5" fill="#F59E0B" opacity="0.4"/>
+  <circle cx="100" cy="220" r="1.5" fill="#06B6D4" opacity="0.4"/>
+  <circle cx="300" cy="220" r="1.5" fill="#A855F7" opacity="0.4"/>
+  
+  <!-- Small decorative elements -->
+  <path d="M 15 125 Q 25 115 35 125 Q 25 135 15 125" fill="#06B6D4" opacity="0.2"/>
+  <path d="M 365 125 Q 375 115 385 125 Q 375 135 365 125" fill="#A855F7" opacity="0.2"/>
 </svg>
